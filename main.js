@@ -56,7 +56,6 @@ const posts = [
     }
 ];
 
-let nameFirstLetter
 
 let container = document.getElementById('container');
 let div, postInformation;
@@ -102,4 +101,6 @@ for(let i = 0; i < posts.length; i++){
     creaPost(postInformation);
     container.appendChild(div);
 
+   
 }
+
