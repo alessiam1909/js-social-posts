@@ -55,3 +55,32 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+let container = document.getElementById('container');
+let div, postInformation;
+
+function creaPost(){
+    div = document.createElement('div');
+    div.classList.add('post');
+    div.innerHTML = `<div class="post__header">
+    <div class="post-meta">                    
+        <div class="post-meta__icon">
+            <img class="profile-pic" src="${postInformation.author[1]}" alt="Phil Mangione">                    
+        </div>
+        <div class="post-meta__data">
+            <div class="post-meta__author">${postInformation.author[0]}</div>
+            <div class="post-meta__time">${postInformation.created}</div>
+        </div>                    
+    </div>
+    </div>`;
+    return div;
+};
+
+
+for(let i = 0; i < posts.length; i++){
+    postInformation = posts[i];
+    console.log(postInformation);
+    creaPost(postInformation);
+    container.appendChild(div);
+
+}
