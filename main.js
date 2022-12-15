@@ -81,13 +81,13 @@ function creaPost(){
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button"  data-postid=${postInformation.id}>
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${postInformation.likes}</b> persone
+                        Piace a <b id="like-counter-${postInformation.id}" class="js-likes-counter">${postInformation.likes}</b> persone
                     </div>
                 </div> 
             </div>  `;
@@ -100,7 +100,33 @@ for(let i = 0; i < posts.length; i++){
     console.log(postInformation);
     creaPost(postInformation);
     container.appendChild(div);
-
-   
 }
+
+//MILESTONE 3
+posts.forEach(elem => {
+    let numeroMiPiace = elem.likes;
+    
+    return numeroMiPiace;
+});
+
+let miPiace = document.getElementsByClassName('js-like-button');
+
+for (let i=0; i<miPiace.length; i++){
+    
+    miPiace[i].addEventListener('click', function(){
+        const postId = this.dataset.postid;
+        const likes = document.getElementById(`like-counter-${postId}`);
+        const likesNumber = parseInt(likes.innerText);
+        likes.innerText = likesNumber+1;
+        miPiace[i] = miPiace[i].classList.add('like-button--liked');
+        miPiace[i].addEventListener('click', function(){
+            miPiace[i] = miPiace[i].classList.remove('like-button--liked');
+            likes.innerText = likesNumber;
+        });
+        
+    });
+}
+
+
+
 
