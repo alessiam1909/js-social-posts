@@ -56,7 +56,7 @@ const posts = [
     }
 ];
 
-let nameFirstLetter;
+let nameFirstLetter
 
 let container = document.getElementById('container');
 let div, postInformation;
